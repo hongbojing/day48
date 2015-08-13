@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
   <meta charset="UTF-8">
   <title>day #</title>
@@ -7,7 +7,27 @@
   <link rel="stylesheet" href="css/anotherstyle.css">
 </head>
 <body>
+  <div ng-controller="filterController as filt">
+    <h1>default</h1>
+    <div ng-repeat="data in filt.dataSource| filter:'aa'">
+      {{data}}
+    </div>
+    <hr>
+    <h1>exact filter</h1>
+    <div ng-repeat="data in filt.dataSource| filter:'aa':true">
+      {{data}}
+    </div>
+    <hr>
+    <h1>use function to do the exact filter</h1>
+    <div ng-repeat="data in filt.dataSource| filter:filt.isExact">
+      {{data}}
+    </div>
+
+  </div>
 
 
+  <script src="js/lib/angular/angular.min.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/controllers/filter-controller.js"></script>
 </body>
 </html>
